@@ -1,5 +1,8 @@
 // 모달을 생성하고 설정하는 함수
-function showModal(imageUrl, text) {
+function showModal(imageUrl, text, index=0) {
+
+  const doorInput = document.querySelector(`.day-${index + 1} > label > input`)
+  
   // 기존에 모달이 있다면 제거합니다.
   const existingModal = document.querySelector('.modal');
   if (existingModal) {
@@ -34,6 +37,8 @@ function showModal(imageUrl, text) {
 
   // 모달에 클릭 이벤트 리스너를 추가하여 닫을 수 있도록 합니다.
   modal.addEventListener('click', () => {
+    if(index !==0)
+      doorInput.checked = false;
     modal.remove(); // 모달을 문서에서 제거합니다.
   });
 
@@ -44,30 +49,30 @@ function showModal(imageUrl, text) {
 }
 
 const modalMessageList = [
-  { "number": 1, "message": "행복의 계절, 모두가 함께하는 24일!" },
-  { "number": 2, "message": "이 12월, 행복한 순간이 우리를 감싸네요." },
-  { "number": 3, "message": "다 같이 즐겁게 보내는 24일, 행복이 가득합니다!" },
-  { "number": 4, "message": "12월의 특별함을 모두와 함께 나누어요." },
-  { "number": 5, "message": "각자의 작은 행복이 모여 만드는 특별한 24일!" },
-  { "number": 6, "message": "행복이라는 이름의 캘린더, 모두에게 열려 있어요." },
-  { "number": 7, "message": "함께 하는 즐거움, 24일 동안 계속되길 바랍니다." },
-  { "number": 8, "message": "12월은 행복한 순간들이 가득한 달이에요." },
-  { "number": 9, "message": "우리 모두에게 찾아온 특별한 행복의 계절!" },
-  { "number": 10, "message": "매일 매일이 행복으로 가득찬 24일이 되길." },
-  { "number": 11, "message": "12월, 행복이 가득한 당신과 나누는 소중한 시간." },
-  { "number": 12, "message": "다 함께하는 24일, 행복이 여러 가지 모습으로 찾아올 거예요." },
-  { "number": 13, "message": "행복의 파도가 모두에게 찾아오는 특별한 24일!" },
-  { "number": 14, "message": "12월, 각자의 작은 행복이 모여 큰 기쁨이 되길." },
-  { "number": 15, "message": "모두에게 행복이 넘치는 24일을 기대해봐요." },
-  { "number": 16, "message": "12월의 특별한 순간, 행복이 퍼져나가길." },
-  { "number": 17, "message": "모두에게 행복한 24일이 될 것을 기대합니다!" },
-  { "number": 18, "message": "12월, 행복이 가득찬 마음으로 채워져 있는 시간." },
-  { "number": 19, "message": "다양한 행복이 모여 하나로 뭉쳐지는 24일!" },
-  { "number": 20, "message": "12월, 당신과 나누는 특별한 행복의 순간들." },
-  { "number": 21, "message": "모두에게 다가오는 24일, 행복이 함께하기를!" },
-  { "number": 22, "message": "12월의 행복한 기운이 모두를 감싸네요." },
-  { "number": 23, "message": "다 함께하는 24일, 행복한 느낌이 가득할 거예요." },
-  { "number": 24, "message": "12월, 모두에게 기쁨과 행복이 넘치는 달이에요." }
+  { "number": 1, "message": "벌써 12월이야!" },
+  { "number": 2, "message": "올해도 너무 바쁘고 힘들었지만" },
+  { "number": 3, "message": "(사실 나는 바쁜지 몇 달 안되었지만^.^)" },
+  { "number": 4, "message": "남은게 더 많은 한 해가 되었길 바랄게~!" },
+  { "number": 5, "message": "님들과 함께한 올해도" },
+  { "number": 6, "message": "너무 즐거웠고" },
+  { "number": 7, "message": "행복했다~" },
+  { "number": 8, "message": "내년에는 우리" },
+  { "number": 9, "message": "더 돈독하게 재밌게 보내자 ~" },
+  { "number": 10, "message": "백수랑 놀아줘서 고맙고-3-" },
+  { "number": 11, "message": "챙겨줘서 고마웠어!" },
+  { "number": 12, "message": "내년에는 돈 많이 벌어올께 ^.^" },
+  { "number": 13, "message": "더 많이 놀아줘!" },
+  { "number": 14, "message": "그대들도 내년에는 조금 덜 일하고 돈은 더 많이 받길!!" },
+  { "number": 15, "message": "이제 나이도 있으니ㅋㅋ" },
+  { "number": 16, "message": "건강도 잘 챙기고" },
+  { "number": 17, "message": "내년에는 술도 조금만!" },
+  { "number": 18, "message": "대신 맛있게 먹자" },
+  { "number": 19, "message": "남은 연말 행복하게 보내고~~" },
+  { "number": 20, "message": "편지를 안쓰다보니" },
+  { "number": 21, "message": "24문장 쓰기도 어렵네" },
+  { "number": 22, "message": "그럼 몇일 안남았으니까 딱 말할게ㅋㅋ" },
+  { "number": 23, "message": "사랑해 ~" },
+  { "number": 24, "message": "Merry Christmas! 크리스마스 이브 행복하게 보내~" }
 ];
 
 // // 전역에서 한 번만 실행되도록 클릭 이벤트 리스너를 등록

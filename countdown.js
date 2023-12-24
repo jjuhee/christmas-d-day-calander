@@ -52,9 +52,19 @@ doors.forEach((door, index) => {
       const pTag = backDiv.querySelector('p')
       const text = modalMessageList[index]['message']
 
-      // showModal 함수를 호출하여 모달을 표시합니다.
-      showModal(imageUrl, text);
-      // alert('이벤트 캘린더를 엽니다.');
+      const prevDoorInput = document.querySelector(`.day-${index} > label > input`)
+      const doorInput = document.querySelector(`.day-${index + 1} > label > input`)
+
+      if(index===0|| prevDoorInput.checked) {
+        // showModal 함수를 호출하여 모달을 표시합니다.
+        showModal(imageUrl, text);
+        // alert('이벤트 캘린더를 엽니다.');
+      } else {
+        doorInput.checked = false;
+        showModal("", "이전카드를 먼저 열어줘..",index);
+        
+      }
+        
 
     } else {
       // 현재 날짜가 열 수 있는 날짜보다 이전인 경우 몇 일 후에 열 수 있다는 메시지를 표시
